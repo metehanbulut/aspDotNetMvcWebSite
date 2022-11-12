@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "MAKALELER";
+    Layout = "~/Views/Shared/admin.cshtml";
+}
+@using (Html.BeginForm("makaleekle", "admin", FormMethod.Get))
+{
+    <p>ARANACAK MAKALE BAŞLIĞI:@Html.TextBox("p")
+        <input type="submit" value="ARA"/>
+    </p>
+    
+}
+@model IEnumerable<proje.Models.makale>
+<table class="table table-bordered">
+    <tr>
+        <th>MAKALE ID</th>
+        <th>MAKALE BAŞLIĞI</th>
+        <th>MAKALE İÇERİK</th>
+        <th>MAKALE TARİH</th>
+        <th>MAKALE KATEGORİ</th>
+        <th>MAKALE GÖRÜNTÜLENME</th>
+        <th>MAKALE BEGENİ</th>
+        <th>MAKALE YAZARID</th>
+        <th>MAKALE RESİMID</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+        
+    </tr>
+    <tbody>
+         @foreach (proje.Models.makale mkl in Model)
+         {
+             <tr>
+                 <th>@mkl.makale_id</th>
+                 <td>@mkl.makale_baslik</td>
+                 <td>@mkl.makale_icerik</td>
+                 <td>@mkl.makale_tarih</td>
+                 <td>@mkl.makale_kategorid</td>
+                 <td>@mkl.makale_goruntulenme</td>
+                 <td>@mkl.makale_begeni</td>
+                 <td>@mkl.makale_yazarid</td>
+                 <td>@mkl.resim_id></td>
+                 <td><a href="/admin/makalesil/@mkl.makale_id" class="btn btn-warning">SİL</a></td>
+                 <td><a href="/admin/makaleguncelle/@mkl.makale_id" class="btn btn-primary">GÜNCELLE</a></td>
+             </tr>
+         }
+    </tbody>
+</table>
+<a href ="yenimakale/" class="btn btn-danger">YENİ MAKALE EKLE</a>

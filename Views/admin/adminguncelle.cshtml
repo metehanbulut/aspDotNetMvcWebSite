@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "adminguncelle";
+    Layout = "~/Views/Shared/ViewPage2.cshtml";
+}
+
+<h2>ADMİN   GÜNCELLE</h2>
+@model proje.Models.admin
+@using (Html.BeginForm("admingun", "admin", FormMethod.Post))
+{
+     <div class="form-group">
+         <br />
+           @Html.LabelFor(m=>m.admin_id)
+        @Html.TextBoxFor(m=>m.admin_id , new { @class="form-control"})
+         <br />
+        @Html.LabelFor(m=>m.admin_ka)
+        @Html.TextBoxFor(m=>m.admin_ka , new { @class="form-control"})
+       <br />
+       <br />
+        @Html.LabelFor(m=>m.admin_sf)
+        @Html.TextBoxFor(m=>m.admin_sf , new { @class="form-control"})
+        <br />
+         <div >
+    <button class="btn btn-primary">ADMİN GÜNCELLE</button>
+</div>
+         </div>}

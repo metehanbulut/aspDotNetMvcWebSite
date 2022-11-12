@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "ROL GÜNCELLE";
+    Layout = "~/Views/Shared/ViewPage2.cshtml";
+}
+
+<h2>ROL GÜNCELLE</h2>
+@model proje.Models.rol
+@using (Html.BeginForm("rolgun", "admin", FormMethod.Post))
+{
+     <div class="form-group">
+         <br />
+         <br />
+        @Html.LabelFor(m=>m.rol_id)
+        @Html.TextBoxFor(m=>m.rol_id , new { @class="form-control"})
+       <br />
+       <br />
+        @Html.LabelFor(m=>m.rol_adi)
+        @Html.TextBoxFor(m=>m.rol_adi , new { @class="form-control"})
+        <br />
+         <div >
+    <button class="btn btn-primary">ROL GÜNCELLE</button>
+</div>
+         </div>
+}
+   
+ 

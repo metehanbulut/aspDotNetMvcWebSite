@@ -1,0 +1,16 @@
+﻿
+@model IEnumerable<proje.Models.etiket>
+
+<div class="sidebox widget">
+          <h3 class="widget-title section-title">ETİKETLER</h3>
+          <ul class="tag-list">
+              @foreach (proje.Models.etiket etiket in Model)
+              {
+                   <li><a href="/Etiket/Index/@etiket.etiket_id">@etiket.etiket_adi (@etiket.makales.Count)</a></li>
+              }
+           
+         
+          </ul>
+          <!-- /.tag-list --> 
+          
+        </div>

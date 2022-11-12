@@ -1,0 +1,97 @@
+﻿@{
+    ViewBag.Title = "KULLANICILAR";
+    Layout = "~/Views/Shared/admin.cshtml";
+}
+
+@using (Html.BeginForm("kullaniciekle","admin",FormMethod.Get))
+{
+ <p>ARANACAK KULLANICI ADI:@Html.TextBox("p")
+        <input type="submit" value="ARA"/>
+    </p>
+    
+}
+@model IEnumerable<proje.Models.kullanici>
+
+<table class="table table-bordered">
+    <tr>
+        <th>KULLANICI ID</th>
+        <th>KULLANICI ADI</th>
+        <th>KULLANICI ŞİFRE</th>
+        <th>KULLANICI K.A.</th>
+        <th>KULLANICI MAİL</th>
+        <th>KULLANICI CİNSİYET</th>
+        <th>KULLANICI DOĞUM TARİHİ</th>
+        <th>KULLANICI KAYIT TARİHİ</th>
+        <th>KULLANICI RESİMID</th>
+        <th>KULLANICI YAZAR</th>
+        <th>KULLANICI ONAYLANDI</th>
+        <th>KULLANICI AKTİF</th>
+        <th>KULLANICI AÇIKLAMA</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+        
+    </tr>
+    <tbody>
+         @foreach (proje.Models.kullanici klnc in Model)
+         {
+             <tr>
+                 <th>@klnc.kullanici_id</th>
+                 <td>@klnc.kullanici_adi</td>
+                 <td>@klnc.sifre</td>
+                 <td>@klnc.kullaniciadi</td>
+                 <td>@klnc.kullanici_mail</td>
+                 <td>@klnc.kullanici_cinsiyet</td>
+                 <td>@klnc.kullanici_dogum</td>
+                 <td>@klnc.kullanici_kayit</td>
+                 <td>@klnc.kullanici_resimid></td>
+                 <td>@klnc.yazar</td>
+                 <td>@klnc.onaylandi</td>
+                 <td>@klnc.aktif</td>
+                 <td>@klnc.aciklama</td>
+                  <td><a href="/admin/kullanicisil/@klnc.kullanici_id" class="btn btn-warning">SİL</a></td>
+                 <td><a href="/admin/kullaniciguncelle/@klnc.kullanici_id" class="btn btn-primary">GÜNCELLE</a></td>
+                 </tr>
+         }
+    </tbody>
+</table>
+@*<a href ="yenikullanici" class="btn btn-danger">YENİ KULLANICI EKLE</a>*@
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal1">
+    Kullanıcı Ekle
+</button>
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">KULLANICI EKLEME EKRANI</h2>
+
+            </div>
+            <form method="post" action="yenikullanici">
+                <div class="modal-body">
+                   
+                    <br />
+          <label>KULLANICI ADI-SOYADI</label>
+        <input type="text" class="form-control" name="kullanici_adi" />
+                    <br />
+         <label>KULLANICI ŞİFRE</label>
+        <input type="text" class="form-control" name="sifre" />
+                    <br />
+                       <label>KULLANICI ADI</label>
+        <input type="text" class="form-control" name="kullaniciadi" />
+         <label>KULLANICI MAİL</label>
+        <input type="text" class="form-control" name="kullanici_mail" />
+    <br />
+                     <label>CİNSİYET</label> 
+        
+                  <input type="radio" name="rbkadin" value="KADIN " /> <span>KADIN</span>
+                   <input type="radio" name="rberkek" value="ERKEK " /> <span>ERKEK</span>
+    <br />
+                    <label>KULLANICI DOGUM TARİHİ</label>
+        <input type="date" class="form-control" name="kullanici_dogum" />
+                    <br />
+        <button class="btn btn-danger">kULLANICI  EKLE</button>
+    </div>
+        </form>
+        </div>
+
+    </div>
+</div>

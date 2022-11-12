@@ -1,0 +1,16 @@
+﻿@{
+    Layout = null;
+}
+
+@model IEnumerable<proje.Models.kategori>
+
+<div class="sidebox widget">
+          <h3 class="widget-title section-title">Kategoriler</h3>
+          <ul class="circled">
+              @foreach (proje.Models.kategori kategori  in Model)
+              {
+                  <li><a href="/Kategori/Index/@kategori.kategori_id">@kategori.kategori_adi (@kategori.makales.Count)</a></li>
+              }
+            </ul>
+           
+        </div>

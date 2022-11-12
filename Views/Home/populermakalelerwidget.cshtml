@@ -1,0 +1,22 @@
+﻿@model IEnumerable<proje.Models.makale>
+
+<div class="sidebox widget">
+          <h3 class="widget-title section-title">Popüler Makaleler</h3>
+          <ul class="post-list">
+              @foreach (proje.Models.makale makale in Model)
+              {
+                   <li>
+              <div class="icon-overlay"> <a href="/Makale/Detay/@makale.makale_id">
+                  <img src="@makale.resim.kucukboyut" alt="" /> </a> </div>
+              <div class="meta">
+                <h5><a href="/Makale/Detay/@makale.makale_id">@makale.makale_baslik</a></h5>
+                <em>@makale.makale_tarih.ToShortDateString() <span class="comments"><a href="#">@makale.yorums.Count <i class="icon-chat-1"></i></a></span></em>
+
+              </div>
+            </li>
+              }
+           
+           
+          </ul>
+          <!-- /.post-list --> 
+        </div>

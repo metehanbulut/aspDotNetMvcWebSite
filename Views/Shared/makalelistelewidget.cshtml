@@ -1,0 +1,66 @@
+﻿@{
+    Layout=null;
+}
+
+    <script src="~/Content/style/js/jquery.min.js"></script>
+<script>
+    $(document).ready(function myfunction(){
+        $("a.begen").click(function myfunction(){
+            var id=$(this).data("id");
+            var url = "/makale/begen/" + id;
+            $.ajax({
+                type:"GET",
+                url: link,
+                success: function (result) {
+                    $("a.begen").html(result);
+                }
+
+            });
+        });
+    });
+    
+</script>
+@model IEnumerable<proje.Models.makale>
+
+
+@helper icerikkisalt(string metin)
+{
+if(metin.Length>100)
+{
+   @metin.Substring(0,100) 
+}
+else{
+    @metin
+}
+}
+
+<div class="blog-posts col-blog">
+    @foreach(proje.Models.makale makale in Model)
+    {
+          <div class="post row">
+            <div class="col-sm-4">
+              <figure><a href="/Makale/Detay/@makale.makale_id">
+                <div class="text-overlay">
+                  <div class="info"><span>Hepsini Oku</span></div>
+                </div>
+                <img src="@makale.resim.ortaboyut" alt="" /></a></figure>
+            </div>
+            <div class="col-sm-8 post-content">
+              <div class="meta"><span class="date">@makale.makale_tarih.ToShortDateString()</span><span class="comments"><a href="#">@makale.yorums.Count <i class="icon-chat-1"></i></a></span>
+                  <span>
+                      <a  href="javascript:void(0);" data-id="@makale.makale_id"  class="begen">
+                          @makale.makale_begeni
+                          <img src="/Content/image/like.png" />
+                      </a>
+                  </span>
+                  <span>
+                      @makale.makale_goruntulenme
+                      <img src="/Content/image/view.png" />
+                  </span>
+              </div>
+              <h2 class="post-title"><a href="/Makale/Detay/@makale.makale_id">@makale.makale_baslik</a></h2>
+              <p>@icerikkisalt(makale.makale_icerik)</p>
+            </div>
+          </div>
+    }
+        </div>

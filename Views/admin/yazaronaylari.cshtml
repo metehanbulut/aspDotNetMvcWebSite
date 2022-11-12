@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "YAZAR ONAYLARI";
+    Layout = "~/Views/Shared/admin.cshtml";
+}
+
+@model IEnumerable<proje.Models.kullanici>
+<table>
+@foreach (proje.Models.kullanici item in Model)
+{
+    <tr>
+            <td> @item.kullaniciadi  </td>
+         <td> <a href="/admin/onayver/@item.kullanici_id">ONAY VER </a> </td>
+       
+    </tr>
+}
+
+</table>

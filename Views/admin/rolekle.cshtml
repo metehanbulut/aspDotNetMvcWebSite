@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "rolekle";
+    Layout = "~/Views/Shared/admin.cshtml";
+}
+
+
+@using (Html.BeginForm("rolekle", "admin", FormMethod.Get))
+{
+    <p>ARANACAK ROL ADI:@Html.TextBox("p")
+        <input type="submit" value="ARA"/>
+    </p>
+    
+}
+@model IEnumerable<proje.Models.rol>
+<table class="table table-bordered">
+    <tr>
+        <th>ROL ID</th>
+        <th>ROL ADI</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+        
+        
+    </tr>
+    <tbody>
+         @foreach (proje.Models.rol rol in Model)
+         {
+             <tr>
+                 <th>@rol.rol_id</th>
+                 <td>@rol.rol_adi</td>
+                 <td><a href="/admin/rolsil/@rol.rol_id" class="btn btn-warning">SİL</a></td>
+                 <td><a href="/admin/rolguncele/@rol.rol_id" class="btn btn-primary">GÜNCELLE</a></td>
+                
+             </tr>
+         }
+    </tbody>
+</table>
+@*<a href ="yenirol" class="btn btn-danger">YENİ ROL EKLE</a>*@
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal1">
+    Rol Ekle
+</button>
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">ROL EKLEME EKRANI</h2>
+
+            </div>
+            <form method="post" action="yenirol">
+                <div class="modal-body">
+                   
+                    <br />
+            <label>ROLADI</label>
+        <input type="text" class="form-control" name="rol_adi" />
+                    <br />
+        
+        <button class="btn btn-danger">ROL EKLE</button>
+    </div>
+        </form>
+        </div>
+
+    </div>
+</div>
+
+

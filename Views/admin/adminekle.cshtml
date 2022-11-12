@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "adminekle";
+    Layout = "~/Views/Shared/admin.cshtml";
+}
+
+@using (Html.BeginForm("adminekle", "admin", FormMethod.Get))
+{
+    <p>ARANACAK ADMİN ADI:@Html.TextBox("p")
+        <input type="submit" value="ARA"/>
+    </p>
+    
+}
+@model IEnumerable<proje.Models.admin>
+<table class="table table-bordered">
+    <tr>
+        <th>ADMİN ID</th>
+        <th>ADMİN KULLANICI ADI</th>
+        <th>ADMİN SİFRE</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+        
+        
+    </tr>
+    <tbody>
+         @foreach (proje.Models.admin admn in Model)
+         {
+             <tr>
+                 <th>@admn.admin_id</th>
+                 <td>@admn.admin_ka</td>
+                 <td>@admn.admin_sf</td>
+                 <td><a href="/admin/adminsil/@admn.admin_id" class="btn btn-warning">SİL</a></td>
+                 <td><a href="/admin/adminguncelle/@admn.admin_id" class="btn btn-primary">GÜNCELLE</a></td>
+                
+             </tr>
+         }
+    </tbody>
+</table>
+@*<a href ="yeniadmin" class="btn btn-danger">YENİ ADMİN EKLE</a>*@
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal1">
+    Admin Ekle
+</button>
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">ADMİN EKLEME EKRANI</h2>
+
+            </div>
+            <form method="post" action="yeniadmin">
+                <div class="modal-body">
+                   
+                    <br />
+            <label>ADMİN KULLANICI ADI</label>
+        <input type="text" class="form-control" name="admin_ka" />
+                    <br />
+        <label>ADMİN ŞİFRE</label>
+        <input type="text" class="form-control" name="admin_sf" />
+                    <br />
+    
+        <button class="btn btn-danger">ADMİN EKLE</button>
+    </div>
+        </form>
+        </div>
+
+    </div>
+</div>
+

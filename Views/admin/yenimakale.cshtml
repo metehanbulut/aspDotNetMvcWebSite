@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "MAKALE EKLE";
+    Layout = "~/Views/Shared/ViewPage2.cshtml";
+}
+
+<h2>MAKALE EKLE</h2>
+<form  method="post" enctype="multipart/form-data">
+    <table>
+        <tr>
+            <td>BAŞLIK</td>
+            <td>
+            <input type="text" name="baslik" value=" " />
+
+            </td>
+        </tr>
+          <tr>
+            <td>İÇERİK</td>
+            <td>
+            <input type="text" name="icerik" value=" " />
+
+            </td>
+
+        </tr>
+        <tr>
+            <td>KATEGORİ</td>
+            <td>
+            <select name="makale_kategorid">
+                @foreach (proje.Models.kategori item in ViewBag.kategoriler)
+                {
+                    <option value="@item.kategori_id">@item.kategori_adi</option>
+                    
+                }
+            </select>
+
+            </td>
+          
+        </tr>
+        <tr>
+            <td>RESİM</td>
+            <td>
+            <input type="file" name="rsm " value="" />
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" name="name" value=" MAKALE EKLE" />
+
+            </td>
+        </tr>
+    </table>
+    </form>

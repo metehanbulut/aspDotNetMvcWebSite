@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "ETİKETLER";
+    Layout = "~/Views/Shared/admin.cshtml";
+}
+
+@using (Html.BeginForm("etiketekle", "admin", FormMethod.Get))
+{
+    <p>ARANACAK ROL ADI:@Html.TextBox("p")
+        <input type="submit" value="ARA"/>
+    </p>
+    
+}
+@model IEnumerable<proje.Models.etiket>
+<table class="table table-bordered">
+    <tr>
+        <th>ETİKET ID</th>
+        <th>ETİKET ADI</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+        
+        
+    </tr>
+    <tbody>
+         @foreach (proje.Models.etiket etkt in Model)
+         {
+             <tr>
+                 <th>@etkt.etiket_id</th>
+                 <td>@etkt.etiket_adi</td>
+                 <td><a href="/admin/etiketsil/@etkt.etiket_id" class="btn btn-danger">SİL</a></td>
+                 <td><a href="/admin/etiketguncelle/@etkt.etiket_id" class="btn btn-info">GÜNCELLE</a></td>
+
+             </tr>
+         }
+    </tbody>
+</table>
+<a href ="yenietiket" class="btn btn-danger">YENİ ETİKET EKLE</a>

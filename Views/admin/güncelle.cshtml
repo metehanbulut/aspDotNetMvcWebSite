@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "güncelle";
+    Layout = "~/Views/Shared/ViewPage2.cshtml";
+}
+
+@model proje.Models.kategori
+
+@using (Html.BeginForm("gunyap","admin",FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m=>m.kategori_id)
+        @Html.TextBoxFor(m=>m.kategori_id , new { @class="form-control"})
+      <br />
+        @Html.LabelFor(m=>m.kategori_adi)
+        @Html.TextBoxFor(m=>m.kategori_adi , new { @class="form-control"})
+        <br />
+        @Html.LabelFor(m=>m.kategori_aciklama)
+        @Html.TextBoxFor(m=>m.kategori_aciklama , new { @class="form-control"})
+
+    </div>
+<div >
+    <button class="btn btn-primary">KATEGORİ GÜNCELLE</button>
+</div>
+
+}

@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "KATEGORİ ";
+    Layout = "~/Views/Shared/admin.cshtml";
+}
+@using (Html.BeginForm("kategoriekle", "admin", FormMethod.Get))
+{
+    <p>ARANACAK KATEGORİ ADI:@Html.TextBox("p")
+        <input type="submit" value="ARA"/>
+    </p>
+    
+}
+@model IEnumerable<proje.Models.kategori>
+<table class="table table-bordered">
+    <tr>
+        <th>KATEGORİ ID </th>
+        <th>KATEGORİ ADI</th>
+        <th>KATEGORİ AÇIKLAMA</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+    </tr>
+    <tbody>
+        @foreach(proje.Models.kategori kategori in Model)
+        {
+            <tr>
+            <td>@kategori.kategori_id</td>
+            <td>@kategori.kategori_adi</td>
+            <td>@kategori.kategori_aciklama</td>
+            <td><a href="/admin/sil/@kategori.kategori_id" class="btn btn-warning">SİL</a></td>
+            <td><a href="/admin/güncelle/@kategori.kategori_id" class="btn btn-success">GÜNCELLE</a></td>
+
+
+                </tr>
+        }
+    </tbody>
+</table>
+@*<a href ="yenikategori" class="btn btn-danger">YENİ KATEGORİ EKLE</a>*@
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal1">
+    Kategori Ekle
+</button>
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">KATEGORİ EKLEME EKRANI</h2>
+
+            </div>
+            <form method="post" action="yenikategori">
+                <div class="modal-body">
+                   
+                    <br />
+            <label>KATEGORİ ADI</label>
+        <input type="text" class="form-control" name="kategori_adi" />
+                    <br />
+        <label>KATEGORİ TANIMI</label>
+        <input type="text" class="form-control" name="kategori_aciklama" />
+                    <br />
+    
+        <button class="btn btn-danger">KATEGORİ EKLE</button>
+    </div>
+        </form>
+        </div>
+
+    </div>
+</div>
+

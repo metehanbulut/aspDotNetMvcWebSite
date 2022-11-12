@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "kullaniciguncelle";
+    Layout = "~/Views/Shared/ViewPage2.cshtml";
+}
+
+<h2>KULLANICI GÜNCELLE</h2>
+@model proje.Models.kullanici
+@using (Html.BeginForm("kulgun", "admin", FormMethod.Post))
+{
+    <div class="form-group">
+        <br />
+       @Html.LabelFor(m=>m.kullanici_id)
+        @Html.TextBoxFor(m=>m.kullanici_id , new { @class="form-control"})
+        <br />
+       @Html.LabelFor(m=>m.kullanici_adi)
+        @Html.TextBoxFor(m=>m.kullanici_adi , new { @class="form-control"})
+         <br />
+       @Html.LabelFor(m=>m.sifre)
+        @Html.TextBoxFor(m=>m.sifre , new { @class="form-control"})
+         <br />
+       @Html.LabelFor(m=>m.kullaniciadi)
+        @Html.TextBoxFor(m=>m.kullaniciadi , new { @class="form-control"})
+        <br />
+       @Html.LabelFor(m=>m.kullanici_mail)
+        @Html.TextBoxFor(m=>m.kullanici_mail , new { @class="form-control"})
+           <br />
+       @Html.LabelFor(m=>m.kullanici_cinsiyet)
+        @Html.RadioButtonFor(m=>m.kullanici_cinsiyet , new { @class="form-control"})
+          @Html.RadioButtonFor(m=>m.kullanici_cinsiyet , new { @class="form-control"})
+         <br />
+       @Html.LabelFor(m=>m.kullanici_dogum)
+        @Html.TextBoxFor(m=>m.kullanici_dogum , new { @class="form-control"})
+           <br />
+ 
+           </div>
+     <div >
+    <button class="btn btn-primary">KULLANICI GÜNCELLE</button>
+</div>
+}
+    

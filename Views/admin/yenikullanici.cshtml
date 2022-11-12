@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "YENİ KULLANICI";
+    Layout = "~/Views/Shared/ViewPage2.cshtml";
+}
+
+<h2>YENİ KULLANICI</h2>
+<form method="post" class="form-group">
+    <div>
+        <label>KULLANICI ADI-SOYADI</label>
+        <input type="text" class="form-control" name="kullanici_adi" />
+    </div>
+     <div>
+        <label>KULLANICI ŞİFRE</label>
+        <input type="text" class="form-control" name="sifre" />
+    </div>
+    <div>
+        <label>KULLANICI ADI</label>
+        <input type="text" class="form-control" name="kullaniciadi" />
+    </div>
+    <div>
+        <label>KULLANICI MAİL</label>
+        <input type="text" class="form-control" name="kullanici_mail" />
+    </div>
+    <div>
+        <label>CİNSİYET</label> 
+        <div>
+                  <input type="radio" name="rbkadin" value="KADIN " /> <span>KADIN</span>
+                   <input type="radio" name="rberkek" value="ERKEK " /> <span>ERKEK</span>
+    </div>
+        </div>
+    <div>
+        <label>KULLANICI DOGUM TARİHİ</label>
+        <input type="date" class="form-control" name="kullanici_dogum" />
+    </div>
+    <div style="margin-top:20px">
+        <button class="btn btn-primary">KULLANICI EKLE</button>
+    </div>
+</form>

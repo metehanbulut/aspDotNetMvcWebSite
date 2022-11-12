@@ -1,0 +1,314 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="shortcut icon" href="/Content/style/images/favicon.png">
+<title>@ViewBag.Title</title> @*diğer sayfalardan hangi title gelirse buraya yazıcak*@
+<!-- Bootstrap core CSS -->
+<link href="/Content/style/css/bootstrap.min.css" rel="stylesheet">
+<link href="/Content/style/css/plugins.css" rel="stylesheet">
+<link href="/Content/style.css" rel="stylesheet">
+<link href="/Content/style/css/color/red.css" rel="stylesheet">
+<link href="/Content/style/type/bebas.css" rel="stylesheet">
+<link href="/Content/style/type/fontello.css" rel="stylesheet">
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="/Content/style/js/html5shiv.js"></script>
+      <script src="/Content/https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <![endif]-->
+    @RenderSection("head",false)@*//false doldururma zorunluluğu yok demektir . buarada da sytle dosyası tanımlayabiliriz diye*@
+</head>
+<body>
+<div id="preloader"><div id="status"><div class="spinner"></div></div></div>
+<div class="body-wrapper">
+  <div class="navbar default">
+    <div class="navbar-header">
+      <div class="container">
+        <div class="basic-wrapper"> <a class="btn responsive-menu pull-right" data-toggle="collapse" data-target=".navbar-collapse"><i></i></a>
+          <div class="navbar-brand"><a href="/Content/index.html"><img src="/Content/style/images/logo.png" alt="" data-src="/Content/style/images/logo.png" data-ret="style/images/logo@2x.png" class="retina" /></a></div>
+        </div>
+        <nav class="collapse navbar-collapse pull-right">
+          <ul class="nav navbar-nav">
+            <li><a href="/Home/Index">ANASAYFA</a></li>
+               @if (!User.Identity.IsAuthenticated)
+              {
+                          <li><a href="/kullanici/uyeol" >ÜYE OL</a></li>@*
+                          <li ><a href="/yazar/yazarol" >YAZAR OL</a> </li>*@
+                          <li ><a href="/kullanici/girisyapadmin" >ADMİN PANELİ</a></li>
+              }
+                        
+
+
+
+
+
+
+
+
+
+
+              @if (User.IsInRole("Yazar"))///giriş yapmış kullanıcının rolü yazarsa
+              {
+                   <li class="current dropdown"><a href="/yazar/Index" class="dropdown-toggle js-activated">YAZAR PANELİ</a>
+              <ul class="dropdown-menu">
+                <li><a href="/makale/makaleekle">MAKALE EKLE</a></li>
+                <li><a href="/yazar/takipcileri">TAKİPÇİLERİM</a></li>
+                <li><a href="/yazar/makalelerim">MAKALELERİM</a></li>
+               
+              </ul>
+            </li>
+              }
+         @*  @if(!User.IsInRole("Yazar") || !(User.IsInRole( "Üye") || User.Identity.IsAuthenticated))
+           {
+               
+              <ul class="dropdown-menu">
+                <li><a href="/makale/makaleekle">MAKALE EKLE</a></li>
+                <li><a href="/kategori/kategoriekle">KATEGORİ EKLE</a></li>
+                <li><a href="/etiket/etiketekle">ETİKET EKLE</a></li>
+                <li><a href="/admin/rolekle">ROL EKLE</a></li>
+                <li><a href="/admin/kullaniciekle">KULLANICI EKLE</a></li>
+                <li><a href="/admin/yazaronaylari">YAZAR ONAYLARI</a></li>
+              </ul>
+            
+              }
+           @if(!User.IsInRole("Yazar") || !User.Identity.IsAuthenticated || !User.IsInRole("Admin"))
+           {
+           
+           }*@
+             
+                                  
+              
+           
+             @if(User.Identity.IsAuthenticated)
+              {
+                 @*  <li ><a href="/yazar/yazarol" >YAZAR OL</a> </li>*@
+            <li><a href="/kullanici/cikisyap">ÇIKIŞ YAP</a></li>
+              }
+              else
+              {
+                   <li><a href="/kullanici/girisyap">GİRİŞ YAP</a></li>
+                  
+                    }
+            <li class="dropdown social-dropdown pull-right">
+              <div class="share btn btn-default dropdown-toggle" data-toggle="dropdown"><i class="icon-heart-1"></i></div>
+              <ul class="button-group dropdown-menu dropdown-menu-right share-links">
+                @*<li><a href="https://tr-tr.facebook.com/" class="btn"><i class="icon-s-facebook"></i></a></li>
+                <li><a href="https://twitter.com/" class="btn"><i class="icon-s-twitter"></i></a></li>
+                <li><a href="https://tr.pinterest.com/" class="btn"><i class="icon-s-pinterest"></i></a></li>*@
+              </ul>
+            </li>
+            <!--/social-dropdown -->
+          </ul>
+          <!--/.navbar-nav -->
+        </nav>     
+        <!--/.nav-collapse -->   
+      </div>
+      <!--/.container --> 
+    </div>
+    <!--/.navbar-header --> 
+  </div>
+  <!--/.navbar -->
+  <div class="offset"></div>
+  <div class="dark-wrapper page-title">
+    <div class="container inner">
+     <div class="slider-pro main-slider">
+      <div class="sp-slides">
+        <div class="sp-slide"> <img class="sp-image" src="/Content/image/like.png"  data-src="/Content/style/images/art/slider-bg1.jpg" alt="" />
+          <h4 class="sp-layer sp-white sp-padding" 
+					data-position="leftBottom" data-horizontal="40" data-vertical="92"
+					data-show-transition="right" data-show-delay="500" > Pellentesque ornare sem lacinia </h4>
+          <p class="sp-layer sp-white sp-padding" 
+					data-position="leftBottom"  data-horizontal="40" data-vertical="40" 
+					data-show-transition="left" data-show-delay="700"> Aenean eu leo quam consectetur urna mollis </p>
+        </div>
+        <div class="sp-slide"> <img class="sp-image" src="style/images/blank.gif"  data-src="/Content/style/images/art/slider-bg2.jpg" alt="" /> </div>
+        <div class="sp-slide"> <img class="sp-image" src="style/images/blank.gif"  data-src="/Content/style/images/art/slider-bg3.jpg" alt="" />
+          <h4 class="sp-layer sp-white sp-padding" 
+					data-position="bottomRight" data-horizontal="40" data-vertical="92"
+					data-show-transition="down" data-show-delay="500" data-hide-transition="up"> Curabitur blandit tempus porttitor </h4>
+          <p class="sp-layer sp-white sp-padding" 
+					data-position="bottomRight" data-horizontal="40" data-vertical="40"
+					data-show-transition="up" data-show-delay="500" data-hide-transition="down"> Duis mollis est non commodo luctus nisi erat </p>
+        </div>
+        <div class="sp-slide"> <img class="sp-image" src="style/images/blank.gif"  data-src="style/images/art/slider-bg4.jpg" alt="" />
+          <h4 class="sp-layer sp-white sp-padding" 
+					data-position="topLeft" data-horizontal="40" data-vertical="40"
+					data-show-transition="down" data-show-delay="500" data-hide-transition="up"> Ligula eget lacinia odio sem nec elit </h4>
+          <p class="sp-layer sp-white sp-padding" 
+					data-position="topLeft" data-horizontal="40" data-vertical="92"
+					data-show-transition="up" data-show-delay="500" data-hide-transition="down"> Donec ullamcorper nulla non metus auctor fringilla </p>
+        </div>
+        <div class="sp-slide"> <img class="sp-image" src="style/images/blank.gif"  data-src="style/images/art/slider-bg5.jpg" alt="" /> </div>
+        <div class="sp-slide"> <img class="sp-image" src="style/images/blank.gif"  data-src="style/images/art/slider-bg6.jpg" alt="" />
+          <h4 class="sp-layer sp-white sp-padding" 
+					data-position="topRight" data-horizontal="40" data-vertical="40"
+					data-show-transition="down" data-show-delay="500" data-hide-transition="up"> Cum sociis natoque penatibus et magnis dis </h4>
+          <p class="sp-layer sp-white sp-padding" 
+					data-position="topRight" data-horizontal="40" data-vertical="92"
+					data-show-transition="up" data-show-delay="500" data-hide-transition="down"> Nullam quis risus eget urna mollis ornare vel eu leo </p>
+        </div>
+        <div class="sp-slide"> <img class="sp-image" src="style/images/blank.gif"  data-src="style/images/art/slider-bg7.jpg" alt="" /> </div>
+        <div class="sp-slide"> <img class="sp-image" src="style/images/blank.gif"  data-src="style/images/art/slider-bg8.jpg" alt="" />
+          <h4 class="sp-layer sp-white sp-padding" 
+					data-position="bottomCenter" data-vertical="92" 
+					data-show-transition="right" data-hide-transition="left" data-show-delay="500" > Nulla vitae elit libero a pharetra augue </h4>
+          <p class="sp-layer sp-white sp-padding" 
+					data-position="bottomCenter" data-vertical="40" 
+					data-show-transition="left" data-show-delay="700" data-hide-transition="right" data-hide-delay="200"> Vivamus sagittis lacus vel augue laoreet rutrum </p>
+        </div>
+        <div class="sp-slide"> <img class="sp-image" src="style/images/blank.gif"  data-src="style/images/art/slider-bg9.jpg" alt="" /> </div>
+        <div class="sp-slide"> <img class="sp-image" src="style/images/blank.gif"  data-src="style/images/art/slider-bg10.jpg" alt="" /> </div>
+        <div class="sp-slide"> <img class="sp-image" src="style/images/blank.gif"  data-src="style/images/art/slider-bg11.jpg" alt="" /> </div>
+        <div class="sp-slide"> <img class="sp-image" src="style/images/blank.gif"  data-src="style/images/art/slider-bg12.jpg" alt="" /> </div>
+      </div>
+      <div class="sp-thumbnails"> <img class="sp-thumbnail" src="style/images/art/slider-th1.jpg" alt="" /> <img class="sp-thumbnail" src="style/images/art/slider-th2.jpg" alt="" /> <img class="sp-thumbnail" src="style/images/art/slider-th3.jpg" alt="" /> <img class="sp-thumbnail" src="style/images/art/slider-th4.jpg" alt="" /> <img class="sp-thumbnail" src="style/images/art/slider-th5.jpg" alt="" /> <img class="sp-thumbnail" src="style/images/art/slider-th6.jpg" alt="" /> <img class="sp-thumbnail" src="style/images/art/slider-th7.jpg" alt="" /> <img class="sp-thumbnail" src="style/images/art/slider-th8.jpg" alt="" /> <img class="sp-thumbnail" src="style/images/art/slider-th9.jpg" alt="" /> <img class="sp-thumbnail" src="style/images/art/slider-th10.jpg" alt="" /> <img class="sp-thumbnail" src="style/images/art/slider-th11.jpg" alt="" /> <img class="sp-thumbnail" src="style/images/art/slider-th12.jpg" alt="" /> </div>
+    </div>
+    </div>
+    <!--/.container -->
+  </div>
+  <!--/.page-title -->
+  
+  <div class="container inner">
+    <div class="row">
+      <div class="col-sm-8 content">
+
+          @RenderBody()
+      </div>
+      <!-- /.content -->
+      <aside class="col-sm-4 sidebar lp30">
+       @{
+           Html.RenderAction("populermakalelerwidget", "Home");
+       }
+        <!-- /.widget -->
+       @{
+           Html.RenderPartial("sitehakkinda");
+       }
+        <!-- /.widget -->
+       @{
+           Html.RenderPartial("Arama");
+       }
+        <!-- /.widget -->
+      
+        <!-- /.widget -->
+      @{
+          Html.RenderAction("kategoriwidget", "kategori");
+      }
+        <!-- /.widget -->
+       @{
+           Html.RenderAction("etiketwidget", "etiket");
+       }
+        <!-- /.widget --> 
+      </aside>
+      <!-- /.col-sm-4 .sidebar --> 
+      
+    </div>
+    <!-- /.row --> 
+  </div>
+  <!--/.container -->
+  <footer class="footer black-wrapper">
+    <div class="container inner">
+      <div class="row">
+	      
+	    <div class="col-sm-3">
+          <div class="widget">
+            <h3 class="widget-title"></h3>
+            <ul class="post-list">
+             @{
+           Html.RenderAction("populermakalelerwidget", "Home");
+       }
+            
+          </ul>
+          <!-- /.post-list -->  
+          </div>
+          <!-- /.widget --> 
+        </div>
+        <!-- /column -->
+        
+        <div class="col-sm-3">
+          <div class="widget">
+            <h3 class="widget-title"></h3>
+              @{
+           Html.RenderPartial("sitehakkinda");
+       }
+            <div class="divide5"></div>
+            <ul class="social">
+             
+             @* <li><a href="https://twitter.com/"><i class="icon-s-twitter"></i></a></li>
+              <li><a href="https://tr-tr.facebook.com/"><i class="icon-s-facebook"></i></a></li>
+              <li><a href="https://tr.pinterest.com/"><i class="icon-s-pinterest"></i></a></li>*@
+             
+            </ul>
+          </div>
+          <!-- /.widget --> 
+        </div>
+        <!-- /column -->
+        
+        <div class="col-sm-3">
+          <div class="widget">
+            <h3 class="widget-title">Bize Ulasin</h3>
+            <p></p>
+            <div class="contact-info"> <i class="icon-location"></i> ANKARA/TÜRKİYE <br />
+              <i class="icon-phone"></i>+00 (000) 000 00 00<br />
+              <i class="icon-mail"></i> satgul_drn@outlook.com </div>
+          </div>
+        </div>
+        <!-- /column -->
+        
+        <div class="col-sm-3">
+          <div class="widget">
+            <h4 class="widget-title"></h4>
+            <ul class="tag-list">
+             @{
+           Html.RenderAction("etiketwidget", "etiket");
+       }
+          </ul>
+          <!-- /.tag-list -->
+          </div>
+          <!-- /.widget -->
+          
+          <div class="widget">
+            <h4 class="widget-title"></h4>
+            <ul class="circled">
+               @{
+          Html.RenderAction("kategoriwidget", "kategori");
+      }
+            </ul>
+          </div>
+          <!-- /.widget --> 
+          
+        </div>
+        <!-- /column --> 
+        
+      </div>
+      <!-- /.row --> 
+    </div>
+    <!-- .container -->
+    
+   @* <div class="sub-footer">
+      <div class="container">
+        <p class="pull-left">© 2015 Keepsake. All rights reserved. Theme by <a href="/Content/http://elemisfreebies.com">elemis</a>.</p>
+        <ul class="footer-menu pull-right">
+          <li><a href="/Content/#">Home</a></li>
+          <li><a href="/Content/#">About</a></li>
+          <li><a href="/Content/#">Portfolio</a></li>
+          <li><a href="/Content/#">Blog</a></li>
+          <li><a href="/Content/#">Contact</a></li>
+        </ul>
+      </div>
+    </div>*@
+  </footer>
+  <!-- /footer -->
+</div>
+<!--/.body-wrapper --> 
+<script src="/Content/style/js/jquery.min.js"></script> 
+<script src="/Content/style/js/bootstrap.min.js"></script> 
+<script src="/Content/style/js/plugins.js"></script> 
+<script src="/Content/style/js/scripts.js"></script>
+</body>
+</html>
